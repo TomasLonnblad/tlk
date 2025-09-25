@@ -1,26 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Lottie from "react-lottie";
+import Lottie from "react-lottie-player";
 
 import * as location from "../1055-world-locations.json";
 import * as success from "../1127-success.json";
-
-const defaultOptions1 = {
-  loop: true,
-  autoplay: true,
-  animationData: location.default,
-  rendererSettings: {
-    preserveAspectRatio: "xMidYMid slice",
-  },
-};
-
-const defaultOptions2 = {
-  loop: true,
-  autoplay: true,
-  animationData: success.default,
-  rendererSettings: {
-    preserveAspectRatio: "xMidYMid slice",
-  },
-};
 
 function PreLoader2() {
   const [data, setData] = useState([]);
@@ -48,9 +30,19 @@ function PreLoader2() {
       {!completed ? (
         <>
           {!loading ? (
-            <Lottie options={defaultOptions1} height={200} width={200} />
+            <Lottie
+              loop
+              animationData={location.default}
+              play
+              style={{ width: 200, height: 200 }}
+            />
           ) : (
-            <Lottie options={defaultOptions2} height={100} width={100} />
+            <Lottie
+              loop
+              animationData={success.default}
+              play
+              style={{ width: 100, height: 100 }}
+            />
           )}
         </>
       ) : (
